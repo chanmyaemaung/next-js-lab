@@ -1,0 +1,44 @@
+:root {
+	--goldColor: #ffd700;
+	--yellowColor: #f0e207;
+
+	--bgGrey: #525252;
+}
+
+main {
+	flex-grow: 1;
+}
+
+.footer {
+	margin-top: auto;
+	position: fixed;
+	bottom: 0;
+	width: 546px;
+}
+
+.my-text:hover {
+	color: indigo;
+}
+
+.result__digit {
+	font-size: 2.5rem;
+	font-weight: bolder;
+}
+
+.text-gold {
+	color: var(--goldColor);
+}
+
+.text-yellow {
+	color: var(--yellowColor);
+}
+
+.bgGrey {
+	background: var(--bgGrey);
+}
+
+.rounded-4 {
+	border-radius: 0.8rem !important;
+}
+
+/* ! Responsive Break Points */
