@@ -1,65 +1,39 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import TwoD from '../components/TwoD';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+// TODO: Declare Variables
+let _corsUrl = 'https://cors.chanlay.workers.dev?u=';
+let _liveResult = 'https://livechannelmm.com/3318/include/live-data.php';
+let _localTxt = 'https://livechannelmm.com/3318/local-data.txt';
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+export default function Home({ twoDApi, retrieveData }) {
+	console.log(twoDApi);
+	return (
+		<main className='text-center mt-1 border border-white shadow-sm rounded'>
+			<TwoD twoDApi={twoDApi} saveApi={retrieveData} />
+		</main>
+	);
+}
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+// TODO: 2D Live API
+export async function getServerSideProps() {
+	const [twoDApiRes, saveApiRes] = await Promise.all([
+		fetch(_liveResult),
+		fetch(_localTxt),
+	]);
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+	const [twoDApi, saveApi] = await Promise.all([
+		twoDApiRes.json(),
+		saveApiRes.text(),
+	]);
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+	// Regex
+	let csv_da = saveApi.split(/\r?\n|\r/);
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+	// Loop through
+	const retrieveData = csv_da.map((el) => {
+		let cell_data = el.split(',');
+		return cell_data;
+	});
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+	return { props: { twoDApi, retrieveData } };
 }
