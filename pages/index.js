@@ -9,7 +9,7 @@ export default function Home({ twoDApi, retrieveData }) {
 	console.log(twoDApi);
 
 	return (
-		<main className='text-center mt-1 border border-white shadow-sm rounded'>
+		<main className='text-center mt-1 border border-white shadow-sm rounded bg-light'>
 			<TwoD twoDApi={twoDApi} saveApi={retrieveData} />
 		</main>
 	);
