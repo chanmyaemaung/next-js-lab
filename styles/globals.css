@@ -12,7 +12,7 @@ body {
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	flex-direction: column;
 	min-height: 100vh;
-	background: var(--light);
+	background: var(--white);
 }
 
 * {

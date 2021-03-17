@@ -7,6 +7,7 @@ let _localTxt = 'https://livechannelmm.com/3318/local-data.txt';
 
 export default function Home({ twoDApi, retrieveData }) {
 	console.log(twoDApi);
+
 	return (
 		<main className='text-center mt-1 border border-white shadow-sm rounded'>
 			<TwoD twoDApi={twoDApi} saveApi={retrieveData} />
@@ -27,11 +28,12 @@ export async function getServerSideProps() {
 	]);
 
 	// Regex
-	let csv_da = saveApi.split(/\r?\n|\r/);
+	let csv_data = saveApi.split(/\r?\n|\r/);
 
 	// Loop through
-	const retrieveData = csv_da.map((el) => {
+	const retrieveData = csv_data.map((el) => {
 		let cell_data = el.split(',');
+
 		return cell_data;
 	});
 

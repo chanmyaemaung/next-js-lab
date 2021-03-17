@@ -18,7 +18,7 @@ const currentTime = new Intl.DateTimeFormat('en-MM', {
 
 export default function Navbar() {
 	return (
-		<nav className='navbar navbar-expand-lg navbar-light sticky-top bg-white'>
+		<nav className='navbar navbar-expand-lg navbar-light sticky-top bg-light border border-white border-2'>
 			<div className='container-fluid d-flex justify-content-between my-text'>
 				<div className=''>{currentDate.format()}</div>
 				<div className=''>2D3D</div>
