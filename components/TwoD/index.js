@@ -1,8 +1,8 @@
 import useSWR from 'swr';
 import Head from 'next/head';
 
-// let _api =
-('https://cors.chanlay.workers.dev?u=https://livechannelmm.com/3318/include/live-data.php');
+let _api =
+	'https://cors.chanlay.workers.dev?u=https://livechannelmm.com/3318/include/live-data.php';
 
 // TODO: Declare Variables
 let morningModern,

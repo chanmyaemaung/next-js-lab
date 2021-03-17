@@ -16,7 +16,7 @@ export default function Home({ twoDApi, retrieveData }) {
 }
 
 // TODO: 2D Live API
-export async function getServerSideProps() {
+export async function getStaticProps(context) {
 	const [twoDApiRes, saveApiRes] = await Promise.all([
 		fetch(_liveResult),
 		fetch(_localTxt),
@@ -37,5 +37,8 @@ export async function getServerSideProps() {
 		return cell_data;
 	});
 
-	return { props: { twoDApi, retrieveData }, revalidate: 1 };
+	return {
+		props: { twoDApi, retrieveData },
+		revalidate: 1,
+	};
 }
