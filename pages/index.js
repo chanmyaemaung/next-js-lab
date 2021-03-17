@@ -37,5 +37,5 @@ export async function getServerSideProps() {
 		return cell_data;
 	});
 
-	return { props: { twoDApi, retrieveData } };
+	return { props: { twoDApi, retrieveData }, revalidate: 1 };
 }

@@ -1,4 +1,8 @@
+import useSWR from 'swr';
 import Head from 'next/head';
+
+// let _api =
+// 	'https://cors.chanlay.workers.dev?u=https://livechannelmm.com/3318/include/live-data.php';
 
 // TODO: Declare Variables
 let morningModern,
@@ -16,7 +20,16 @@ let morningModern,
 const now = new Date();
 const updateTime = now.toISOString().split('T')[0];
 
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 export default function TwoD({ twoDApi, saveApi }) {
+	const { data, error } = useSWR(_api, fetcher);
+
+	if (!data) return 'Loading...';
+	if (error) return 'There is an error...';
+
+	console.log(`${data.mm2d1}${data.mm2d2}`);
+
 	// TODO: Destructuring Api as custom Alias
 	const { set, val, mm2d1: one, mm2d2: two } = twoDApi;
 
