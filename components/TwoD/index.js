@@ -68,7 +68,7 @@ export default function TwoD({ twoDApi, saveApi }) {
 					{/* 12:01 PM */}
 					<div className='col-6'>
 						<div className='card card-body rounded-4 border-white border-2 shadow-sm bgGrey text-light p-1 m-0'>
-							<div className='bg-white text-dark rounded'>
+							<div className='bg-light text-dark rounded'>
 								<h5 className='fs-6 fw-bolder'>12:01 PM</h5>
 							</div>
 							<div className='d-flex p-1 flex-row justify-content-around'>
@@ -94,7 +94,7 @@ export default function TwoD({ twoDApi, saveApi }) {
 					{/* 04:31 PM */}
 					<div className='col-6'>
 						<div className='card card-body rounded-4 border-white border-2 shadow-sm bgGrey text-light p-1 m-0'>
-							<div className='bg-white text-dark rounded'>
+							<div className='bg-light text-dark rounded'>
 								<h5 className='fs-6 fw-bolder'>04:31 PM</h5>
 							</div>
 							<div className='d-flex p-1 flex-row justify-content-around'>
